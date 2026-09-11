@@ -1,6 +1,6 @@
 import os
 
-from ..src.word_count_2 import *
+from ..src.word_count_1 import *
 
 DATA_FOLDER = "PRE_02_mapreduce/data"
 INPUT_FOLDER = "PRE_02_mapreduce/temp/input"

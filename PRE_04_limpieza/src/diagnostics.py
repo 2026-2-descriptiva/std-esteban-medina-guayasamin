@@ -5,7 +5,12 @@ OUTPUT_FILE = "PRE_04_limpieza/submission/ventas.csv"
 
 def main():
     df = pd.read_csv(OUTPUT_FILE)
-    series = df["country"]
+
+    series = df["discount"]
+
+    # series = series.astype(str)
+    # series = series[series.str.startswith("$")]
+
     series = series.sort_values()
     series = series.drop_duplicates()
 

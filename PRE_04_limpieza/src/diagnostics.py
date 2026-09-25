@@ -6,7 +6,7 @@ OUTPUT_FILE = "PRE_04_limpieza/submission/ventas.csv"
 def main():
     df = pd.read_csv(OUTPUT_FILE)
 
-    series = df["discount"]
+    series = df["weight"]
 
     # series = series.astype(str)
     # series = series[series.str.startswith("$")]

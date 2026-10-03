@@ -13,7 +13,7 @@ def pregunta_02():
 
     data = []
 
-    with gzip.open("LAB_01_python_basico/data/data.csv.gz", mode="rt") as f:
+    with gzip.open("data/data.csv.gz", mode="rt") as f:
 
         for linea in f:
             row = linea.strip().split("\t")

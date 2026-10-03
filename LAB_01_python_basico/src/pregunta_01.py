@@ -1,7 +1,4 @@
 
-from nicegui.ui import row
-
-
 def pregunta_01():
     """
     Calcule la suma de los valores de la segunda columna (`value`) del
@@ -16,7 +13,7 @@ def pregunta_01():
 
     data = []
 
-    with gzip.open("LAB_01_python_basico/data/data.csv.gz", mode="rt") as f:
+    with gzip.open("data/data.csv.gz", mode="rt") as f:
 
         for linea in f:
             row = linea.strip().split("\t")

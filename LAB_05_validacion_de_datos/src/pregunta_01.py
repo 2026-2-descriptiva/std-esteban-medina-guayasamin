@@ -53,7 +53,7 @@ def main():
     import gzip
     import json
 
-    with gzip.open("Lab_05_/data/ventas.csv.gz", "rt", encoding="utf-8") as f:
+    with gzip.open("data/ventas.csv.gz", "rt", encoding="utf-8") as f:
         df = pd.read_csv(f)
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
     Final={
@@ -73,9 +73,12 @@ def main():
         "country_values": sorted(df["country"].dropna().unique().tolist())  
     }
     #Escriba el reporte en `submission/data_quality_report.json`
-    with open("submission/data_quality_report.json", "w", encoding="utf-8") as f:
-      json.dump(Final, f, indent=4)
+    with open(
+    "submission/data_quality_report.json",
+    "w",
+    encoding="utf-8"
+) as f:
+      f.write(json.dumps(Final, indent=4, default=int))
 
 
     return Final
-main()

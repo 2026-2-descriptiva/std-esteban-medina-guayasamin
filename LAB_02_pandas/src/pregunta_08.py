@@ -12,4 +12,12 @@ def pregunta_08():
         ...
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Lee el archivo tbl0.tsv
+    df = pd.read_csv("data/tbl0.tsv", sep="\t")
+
+    # Crea la columna 'suma' como la suma de las columnas 'c0' y 'c2'
+    df["suma"] = df["c0"] + df["c2"]
+
+    return df

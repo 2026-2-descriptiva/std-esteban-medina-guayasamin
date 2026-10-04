@@ -9,4 +9,11 @@ def pregunta_06():
         ["A", "B", "C", "D", "E", "F", "G"]
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Lee el archivo tbl1.tsv
+    df = pd.read_csv("data/tbl1.tsv", sep="\t")
+
+    #  Obtiene los valores distintos de la columna c4, los convierte a mayúsculas y los ordena alfabéticamente
+    valores_distintos = sorted(df["c4"].str.upper().unique())
+    return valores_distintos

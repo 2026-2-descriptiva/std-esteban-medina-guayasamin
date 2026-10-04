@@ -8,4 +8,10 @@ def pregunta_02():
         4
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Leer el archivo tbl0.tsv
+    df =pd.read_csv("data/tbl0.tsv", sep="\t")
+
+    # Retornar la cantidad de columnas
+    return len(df.columns)

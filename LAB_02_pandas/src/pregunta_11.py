@@ -15,4 +15,12 @@ def pregunta_11():
         ...
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Lee el archivo tbl1.tsv
+    df = pd.read_csv("data/tbl1.tsv", sep="\t")
+
+    # Agrupa por c0 y concatena las letras de c4 ordenadas alfabéticamente
+    result = df.groupby("c0")["c4"].apply(lambda x: ",".join(sorted(x))).reset_index()
+
+    return result

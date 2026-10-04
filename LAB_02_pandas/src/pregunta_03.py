@@ -13,4 +13,10 @@ def pregunta_03():
         ...
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Leer el archivo tbl0.tsv
+    df = pd.read_csv('data/tbl0.tsv', sep='\t')
+    resultado=dict(df['c1'].value_counts().sort_index().to_dict())
+
+    return resultado

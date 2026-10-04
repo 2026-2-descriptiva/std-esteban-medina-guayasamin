@@ -12,5 +12,11 @@ def pregunta_04():
         C    5.4000
         ...
     """
+    import pandas as pd
 
-    raise NotImplementedError
+    # Lee el archivo tbl0.tsv
+    df = pd.read_csv("data/tbl0.tsv", sep="\t")
+
+    # Calcula el promedio de la columna c2 para cada categoría de c1
+    promedio = df.groupby("c1")["c2"].mean()
+    return promedio

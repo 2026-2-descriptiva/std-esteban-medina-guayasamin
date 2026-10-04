@@ -15,4 +15,15 @@ def pregunta_12():
         ...
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Lee el archivo tbl2.tsv
+    df = pd.read_csv("data/tbl2.tsv", sep="\t")
+
+    # Crea una nueva columna c5 que combine c5a y c5b en el formato "c5a:c5b"
+    df["c5"] = df["c5a"].astype(str) + ":" + df["c5b"].astype(str)
+
+    # Agrupa por c0 y concatena los valores de c5 ordenados alfabéticamente
+    result = df.groupby("c0")["c5"].apply(lambda x: ",".join(sorted(x))).reset_index()
+
+    return result

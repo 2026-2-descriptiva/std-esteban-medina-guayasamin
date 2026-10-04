@@ -15,4 +15,16 @@ def pregunta_13():
         ...
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Lee los archivos tbl0.tsv y tbl2.tsv
+    df_tbl0 = pd.read_csv("data/tbl0.tsv", sep="\t")
+    df_tbl2 = pd.read_csv("data/tbl2.tsv", sep="\t")
+
+    # Combina las tablas usando la columna c0
+    combined_df = pd.merge(df_tbl0, df_tbl2, on="c0")
+
+    # Suma los valores de c5b para cada categoría de c1
+    result = combined_df.groupby("c1")["c5b"].sum().sort_index()
+
+    return result

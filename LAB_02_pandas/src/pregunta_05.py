@@ -13,4 +13,11 @@ def pregunta_05():
         ...
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Leer el archivo tbl0.tsv
+    df = pd.read_csv("data/tbl0.tsv", sep="\t")
+
+    # Agrupar por la columna c1 y obtener el valor máximo de c2 para cada grupo
+    max_values = df.groupby("c1")["c2"].max()
+    return max_values

@@ -13,4 +13,13 @@ def pregunta_09():
         ...
     """
 
-    raise NotImplementedError
+    import pandas as pd
+    import datetime as dt
+
+    # Lee el archivo tbl0.tsv
+    df = pd.read_csv("data/tbl0.tsv", sep="\t")
+
+    # Extrae el año de la columna c3 y lo convierte a texto de cuatro caracteres
+    df["year"] = df["c3"].str[:4]
+
+    return df

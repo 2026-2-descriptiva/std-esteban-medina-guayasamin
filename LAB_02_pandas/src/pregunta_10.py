@@ -1,3 +1,6 @@
+from unittest import result
+
+
 def pregunta_10():
     """
     Usando `data/tbl0.tsv`, construya para cada categoría de la columna `c1`
@@ -15,4 +18,14 @@ def pregunta_10():
         ...
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Lee el archivo tbl0.tsv
+    df = pd.read_csv("data/tbl0.tsv", sep="\t")
+
+    # Agrupa por la columna c1 y concatena los valores de c2 ordenados y separados por ':'
+    result = df.groupby("c1")["c2"].apply(lambda x: ":".join(map(str, sorted(x)))).reset_index()
+    # Establece la columna c1 como índice
+    result.set_index("c1", inplace=True)
+    return result
+

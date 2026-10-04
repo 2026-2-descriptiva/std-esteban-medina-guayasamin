@@ -13,4 +13,11 @@ def pregunta_07():
         ...
     """
 
-    raise NotImplementedError
+    import pandas as pd
+
+    # Lee el archivo tbl0.tsv
+    df = pd.read_csv("data/tbl0.tsv", sep="\t")
+
+    # Suma los valores de la columna c2 para cada categoría de c1
+    suma = df.groupby("c1")["c2"].sum()
+    return suma

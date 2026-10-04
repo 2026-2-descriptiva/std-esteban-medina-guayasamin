@@ -7,5 +7,10 @@ def pregunta_01():
 
         40
     """
+    import pandas as pd
 
-    raise NotImplementedError
+    # Leer el archivo tbl0.tsv
+    df = pd.read_csv('data/tbl0.tsv', sep='\t')
+
+    # Retornar la cantidad de registros
+    return len(df)

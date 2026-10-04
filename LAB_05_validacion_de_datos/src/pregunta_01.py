@@ -53,7 +53,7 @@ def main():
     import gzip
     import json
 
-    with gzip.open("lab_05_validacion_de_datos/data/ventas.csv.gz", "rt", encoding="utf-8") as f:
+    with gzip.open("Lab_05_/data/ventas.csv.gz", "rt", encoding="utf-8") as f:
         df = pd.read_csv(f)
     df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
     Final={
@@ -66,14 +66,16 @@ def main():
                                                                    "city", "purchase_date", "amount", "discount",
                                                                    "weight", "units", "unit_price", "contact_email"]))),
         "duplicate_row_count": df.duplicated().sum(),
-        "duplicate_supplier_id_row_count": df.duplicated(subset=["supplier_id"]).sum()*2,
+        "duplicate_supplier_id_row_count": df.duplicated(subset=["supplier_id"],keep=False).sum(),
         "missing_value_count_by_column": (df.isna() |df.isin(["N/A","n/a",""])).sum().to_dict(),
         "invalid_email_count": (~df["contact_email"].str.contains(r"^[^@]+@[^@]+\.[^@]+$", na=False)).sum(),
         "invalid_unit_count": df["units"].apply(lambda x: pd.notna(x) and not (isinstance(x, (int, float)) and x >= 0)).sum(),
         "country_values": sorted(df["country"].dropna().unique().tolist())  
     }
     #Escriba el reporte en `submission/data_quality_report.json`
-    Final.dumps().save
+    with open("submission/data_quality_report.json", "w", encoding="utf-8") as f:
+      json.dump(Final, f, indent=4)
 
 
     return Final
+main()

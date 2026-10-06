@@ -50,7 +50,6 @@ def pregunta_01() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         ...
     """
     from pathlib import Path
-    import datetime
 
     archivo = Path("data/superstore_orders.csv.gz")
     df = pd.read_csv(archivo, sep=";")

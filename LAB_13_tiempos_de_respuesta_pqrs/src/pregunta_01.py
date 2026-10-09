@@ -60,8 +60,7 @@ def pregunta_01() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
         letter,28138,...
         ...
     """
-    letter = pd.read_csv("data/historical_requests_letter.csv.gz")
-    web = pd.read_csv("data/historical_requests_web.csv.gz")
+
 
     import numpy as np
     from pathlib import Path
@@ -71,9 +70,8 @@ def pregunta_01() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     # 1. CARGAR DATOS
     # ============================================================
 
-    web = pd.read_csv("data/historical_requests_web.csv.gz")
     letter = pd.read_csv("data/historical_requests_letter.csv.gz")
-
+    web = pd.read_csv("data/historical_requests_web.csv.gz")
 
     # ============================================================
     # 2. ELIMINAR FILAS IDÉNTICAS DENTRO DE CADA CANAL
